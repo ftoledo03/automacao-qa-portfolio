@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { ProductsSelectors } from '../selectors/ProductSelectors'
+import { ProductsSelectors } from '../selectors/ProductsSelectors'
 
 export class ProductsPage {
   readonly page: Page;
