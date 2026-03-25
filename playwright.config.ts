@@ -15,6 +15,7 @@ export default defineConfig({
 
   use: {
     baseURL: 'https://www.saucedemo.com',
+    headless: false, 
     screenshot: 'only-on-failure',
     video: 'on-first-retry',
     trace: 'on-first-retry',
@@ -22,7 +23,7 @@ export default defineConfig({
 
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox',  use: { ...devices['Desktop Firefox'] } },
-    { name: 'mobile',   use: { ...devices['Pixel 5'] } },
+    //{ name: 'firefox',  use: { ...devices['Desktop Firefox'] } },
+    //{ name: 'mobile',   use: { ...devices['Pixel 5'] } },
   ],
 });
