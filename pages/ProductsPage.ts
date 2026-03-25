@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import { ProductsSelectors } from '../selectors/ProductSelectors'
 
 export class ProductsPage {
   readonly page: Page;
@@ -8,9 +9,10 @@ export class ProductsPage {
 
   constructor(page: Page) {
     this.page         = page;
-    this.productList  = page.locator('.inventory_list');
-    this.cartIcon     = page.locator('.shopping_cart_link');
-    this.sortDropdown = page.locator('[data-test="product_sort_container"]');
+    this.productList  = page.locator(ProductsSelectors.LIST_PRODUCTS);
+    this.cartIcon     = page.locator(ProductsSelectors.LINK_CART);
+    this.sortDropdown = page.locator(ProductsSelectors.SELECT_SORT);
+    
   }
 
   async addProductToCart(productName: string) {

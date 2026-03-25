@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import { CheckoutSelectors } from '../selectors/CheckoutSelectors';
 
 export class CheckoutPage {
   readonly page: Page;
@@ -11,12 +12,12 @@ export class CheckoutPage {
 
   constructor(page: Page) {
     this.page             = page;
-    this.firstNameInput   = page.locator('[data-test="firstName"]');
-    this.lastNameInput    = page.locator('[data-test="lastName"]');
-    this.postalCodeInput  = page.locator('[data-test="postalCode"]');
-    this.continueButton   = page.locator('[data-test="continue"]');
-    this.finishButton     = page.locator('[data-test="finish"]');
-    this.successMessage   = page.locator('[data-test="complete-header"]');
+    this.firstNameInput   = page.locator(CheckoutSelectors.INPUT_FIRST_NAME);
+    this.lastNameInput    = page.locator(CheckoutSelectors.INPUT_LAST_NAME);
+    this.postalCodeInput  = page.locator(CheckoutSelectors.INPUT_POSTAL_CODE);
+    this.continueButton   = page.locator(CheckoutSelectors.BUTTON_CONTINUE);
+    this.finishButton     = page.locator(CheckoutSelectors.BUTTON_FINISH);
+    this.successMessage   = page.locator(CheckoutSelectors.TEXT_SUCCESS);
   }
 
   async fillForm(firstName: string, lastName: string, postalCode: string) {
