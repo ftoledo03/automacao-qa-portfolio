@@ -24,4 +24,8 @@ export class CartPage {
       .locator('button')
       .click();
   }
+
+  async checkout() {
+    await this.checkoutButton.click();
+  }
 }

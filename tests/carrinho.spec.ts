@@ -19,6 +19,16 @@ test.describe('Shopping Cart', () => {
     await expect(badge).toHaveText('1');
   });
 
+  test('adicionar múltiplos produtos', async ({ page }) => {
+    const products = new ProductsPage(page);
+    await products.addProductToCart('Sauce Labs Backpack');
+    await products.addProductToCart('Sauce Labs Bike Light');
+    await products.addProductToCart('Sauce Labs Bolt T-Shirt');
+
+    const badge = page.locator('.shopping_cart_badge');
+    await expect(badge).toHaveText('3');
+});
+
   test('remover produto do carrinho', async ({ page }) => {
     const products = new ProductsPage(page);
     await products.addProductToCart('Sauce Labs Backpack');
@@ -26,9 +36,15 @@ test.describe('Shopping Cart', () => {
     const cart = new CartPage(page);
     await cart.goto();
     await cart.removeItem('Sauce Labs Backpack');
-
     await expect(cart.cartItems).toHaveCount(0);
   });
+
+  test('carrinho vazio não tem itens', async ({ page }) => {
+    const cart = new CartPage(page);
+    await cart.goto();
+
+    await expect(cart.cartItems).toHaveCount(0);
+});
 
   test('carrinho persiste após navegar entre páginas', async ({ page }) => {
     const products = new ProductsPage(page);

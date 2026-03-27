@@ -9,6 +9,7 @@ export class CheckoutPage {
   readonly continueButton: Locator;
   readonly finishButton: Locator;
   readonly successMessage: Locator;
+  readonly cancelButton: Locator;
 
   constructor(page: Page) {
     this.page             = page;
@@ -18,12 +19,13 @@ export class CheckoutPage {
     this.continueButton   = page.locator(CheckoutSelectors.BUTTON_CONTINUE);
     this.finishButton     = page.locator(CheckoutSelectors.BUTTON_FINISH);
     this.successMessage   = page.locator(CheckoutSelectors.TEXT_SUCCESS);
+    this.cancelButton     = page.locator(CheckoutSelectors.BUTTON_CANCEL);
   }
 
   async fillForm(firstName: string, lastName: string, postalCode: string) {
-    await this.firstNameInput.fill('Jorge Fernando');
-    await this.lastNameInput.fill('Toledo');
-    await this.postalCodeInput.fill('37245-000');
+    await this.firstNameInput.fill(firstName);
+    await this.lastNameInput.fill(lastName);
+    await this.postalCodeInput.fill(postalCode);
   }
 
   async continue() {
@@ -32,5 +34,10 @@ export class CheckoutPage {
 
   async finish() {
     await this.finishButton.click();
+    }
+
+  async cancel() {
+    await this.cancelButton.click();
+    }
+    
   }
-}

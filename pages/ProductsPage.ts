@@ -24,5 +24,12 @@ export class ProductsPage {
 
   async sortBy(option: string) {
     await this.sortDropdown.selectOption(option);
+
   }
+  async getProductCount() {
+    return await this.page.locator('.inventory_item').count();
+  }
+
+
+  
 }
